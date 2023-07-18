@@ -1,18 +1,18 @@
-import { CouterContext } from "@/context/Counter";
-import { useContext } from "react";
+import { useDispatch, useSelector} from "react-redux"
 
 // import React from 'react'
 type Props = {};
 const Couter = (props: Props) => {
-  const { state, dishpatch } = useContext(CouterContext);
-  console.log(state);
+  const { count } = useSelector((state:any) => state);
+  const dispatch = useDispatch();
+  console.log(count);
 
   return (
     <div>
-      Counter {state.count}
-      <button onClick={() => dishpatch({ type: "INCREMENT" })}>INCREMENT</button>
-      <button onClick={() => dishpatch({ type: "DECREMENT" })}>DECREMENT</button>
-      <button onClick={() => dishpatch({ type: "INCREASE", payload: 10 })}>
+      Counter {count}
+      <button onClick={() => dispatch({ type: "INCREMENT" })}>INCREMENT</button>
+      <button onClick={() => dispatch({ type: "DECREMENT" })}>DECREMENT</button>
+      <button onClick={() => dispatch({ type: "INCREASE", payload: 10 })}>
         DECREMENT
       </button>
     </div>
